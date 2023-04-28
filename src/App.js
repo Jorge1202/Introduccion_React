@@ -30,6 +30,26 @@ function App() {
     });
   }
 
+  const onCompleteTodo = (item) => {
+    if (!item.completed) {
+      console.log(item);
+      const todoIndex = todos.findIndex((todo) => todo.text === item.text);
+      const newTodos = [...todos];
+
+      console.log(todoIndex);
+      newTodos[todoIndex].completed = true;
+      setTodos(newTodos);
+    }
+  };
+
+  const onDeleteTodo = (item) => {
+    const todoIndex = todos.findIndex((todo) => todo.text === item.text);
+    const newTodos = [...todos];
+
+    newTodos.splice(todoIndex, 1);
+    setTodos(newTodos);
+  };
+
   return (
     <>
       <TodoCounter totalTodos={totalTodos} completedTodos={completedTodos} />
@@ -41,6 +61,8 @@ function App() {
             key={item.text}
             text={item.text}
             completed={item.completed}
+            onComplete={() => onCompleteTodo(item)}
+            onDeleteTodo={() => onDeleteTodo(item)}
           />
         ))}
       </TodoList>
