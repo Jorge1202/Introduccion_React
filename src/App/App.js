@@ -1,9 +1,10 @@
 import React from "react";
-import { CreateTodoButton } from "./components/CreateTodoButton";
-import { TodoCounter } from "./components/TodoCounter";
-import { TodoItem } from "./components/TodoItem";
-import { TodoList } from "./components/TodoList";
-import { TodoSearch } from "./components/TodoSearch";
+import { CreateTodoButton } from "../components/CreateTodoButton/CreateTodoButton";
+import { TodoCounter } from "../components/TodoCounter/TodoCounter";
+import { TodoItem } from "../components/TodoItem/TodoItem";
+import { TodoList } from "../components/TodoList/TodoList";
+import { TodoSearch } from "../components/TodoSearch/TodoSearch";
+// import './App.css'
 
 const Defaulttodos = [
   { text: "Texto 1", completed: true },
