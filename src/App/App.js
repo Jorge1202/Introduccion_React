@@ -6,37 +6,59 @@ import { TodoList } from "../components/TodoList/TodoList";
 import { TodoSearch } from "../components/TodoSearch/TodoSearch";
 // import './App.css'
 
-const Defaulttodos = [
-  { text: "Texto 1", completed: true },
-  { text: "Cebolla 1", completed: false },
-  { text: "Tarea 1", completed: false },
-  { text: "Cuatro 1", completed: false },
-];
+// const Defaulttodos = [
+//   { text: "Texto 1", completed: true },
+//   { text: "Cebolla 1", completed: false },
+//   { text: "Tarea 1", completed: false },
+//   { text: "Cuatro 1", completed: false },
+// ];
 
 function useLocalStoraje(itemName, initialValue) {
-  const localStorageItem = localStorage.getItem(itemName);
-  let parsedItem = [];
+  const [load, setLoad] = React.useState(false);
+  const [error, setError] = React.useState(true);
+  const [item, setItem] = React.useState(initialValue);
 
-  if (!localStorageItem) {
-    localStorage.setItem(itemName, JSON.stringify(initialValue));
-    parsedItem = [];
-  } else {
-    parsedItem = JSON.parse(localStorageItem);
-  }
+  React.useEffect(() => {
+    setTimeout(() => {
+      try {
+        const localStorageItem = localStorage.getItem(itemName);
+        let parsedItem = [];
 
-  const [item, setItem] = React.useState(parsedItem);
+        if (!localStorageItem) {
+          localStorage.setItem(itemName, JSON.stringify(initialValue));
+          parsedItem = initialValue;
+        } else {
+          parsedItem = JSON.parse(localStorageItem);
+        }
+
+        setItem(parsedItem);
+        setLoad(false);
+      } catch (error) {
+        setError(error);
+      }
+    }, 2000);
+  });
 
   const saveItem = (newItem) => {
-    const stringItem = JSON.stringify(newItem);
-    localStorage.setItem(itemName, stringItem);
-    setItem(newItem);
+    try {
+      const stringItem = JSON.stringify(newItem);
+      localStorage.setItem(itemName, stringItem);
+      setItem(newItem);
+    } catch (error) {
+      setError(error);
+    }
   };
 
-  return [item, saveItem];
+  return { item, saveItem, load, error };
 }
 
 function App() {
-  const [todos, saveTodo] = useLocalStoraje("ListTodos", Defaulttodos);
+  const {
+    item: todos,
+    saveItem: saveTodo,
+    load,
+    error,
+  } = useLocalStoraje("ListTodos", []);
   const [search, setSearch] = React.useState("");
 
   const completedTodos = todos.filter((x) => x.completed).length;
@@ -79,6 +101,9 @@ function App() {
 
       <TodoSearch search={search} setSearch={setSearch} />
       <TodoList>
+        {error && <p>Error </p>}
+        {load && <p>Cargando ... </p>}
+        {!listTodos.length && !load && <p>Crea tu primera tarea</p>}
         {listTodos.map((item) => (
           <TodoItem
             key={item.text}
