@@ -20,8 +20,8 @@ function useLocalStoraje(itemName, initialValue) {
 
         setItem(parsedItem);
         setLoad(false);
-      } catch (error) {
-        setError(error);
+      } catch (e) {
+        setError(e);
       }
     }, 2000);
   });
@@ -31,8 +31,8 @@ function useLocalStoraje(itemName, initialValue) {
       const stringItem = JSON.stringify(newItem);
       localStorage.setItem(itemName, stringItem);
       setItem(newItem);
-    } catch (error) {
-      setError(error);
+    } catch (e) {
+      setError(e);
     }
   };
 

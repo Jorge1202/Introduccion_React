@@ -10,8 +10,9 @@ function TodoProvider(props) {
     load,
     error,
   } = useLocalStoraje("ListTodos", []);
-  const [search, setSearch] = React.useState("");
 
+
+  const [search, setSearch] = React.useState("");
   const completedTodos = todos.filter((x) => x.completed).length;
   const totalTodos = todos.length;
 
@@ -39,6 +40,7 @@ function TodoProvider(props) {
   };
 
   const onDeleteTodo = (item) => {
+    debugger
     const todoIndex = todos.findIndex((todo) => todo.text === item.text);
     const newTodos = [...todos];
 
@@ -48,13 +50,14 @@ function TodoProvider(props) {
   return (
     <TodoContext.Provider
       value={{
-        totalTodos,
         completedTodos,
+        totalTodos,
         search,
+        setSearch,
+
         error,
         load,
         listTodos,
-        setSearch,
         onCompleteTodo,
         onDeleteTodo,
       }}
