@@ -11,7 +11,6 @@ function TodoProvider(props) {
     error,
   } = useLocalStoraje("ListTodos", []);
 
-
   const [search, setSearch] = React.useState("");
   const completedTodos = todos.filter((x) => x.completed).length;
   const totalTodos = todos.length;
@@ -20,6 +19,7 @@ function TodoProvider(props) {
   if (search.length === 0) {
     listTodos = todos;
   } else {
+
     listTodos = todos.filter((todo) => {
       let totoText = todo.text.toLowerCase();
       let textSearch = search.toLowerCase();
@@ -29,18 +29,14 @@ function TodoProvider(props) {
 
   const onCompleteTodo = (item) => {
     if (!item.completed) {
-      console.log(item);
       const todoIndex = todos.findIndex((todo) => todo.text === item.text);
       const newTodos = [...todos];
-
-      console.log(todoIndex);
       newTodos[todoIndex].completed = true;
       saveTodo(newTodos);
     }
   };
 
   const onDeleteTodo = (item) => {
-    debugger
     const todoIndex = todos.findIndex((todo) => todo.text === item.text);
     const newTodos = [...todos];
 

@@ -1,7 +1,7 @@
 import React from "react";
 
 function useLocalStoraje(itemName, initialValue) {
-  const [load, setLoad] = React.useState(false);
+  const [load, setLoad] = React.useState(true);
   const [error, setError] = React.useState(false);
   const [item, setItem] = React.useState(initialValue);
 

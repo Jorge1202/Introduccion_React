@@ -1,11 +1,11 @@
 import React from "react";
 import "./TodoItem.css";
-function TodoItem({completed, onComplete, text,onDeleteTodo}) {
+function TodoItem({completed, onCompleteTodo, text,onDeleteTodo}) {
   return (
     <li className="TodoItem">
       <span
         className={`Icon Icon-check ${completed && "Icon-check--active"}`}
-        onClick={onComplete}
+        onClick={onCompleteTodo}
       >
         √
       </span>
