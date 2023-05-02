@@ -3,10 +3,10 @@ import { TodoContext } from "../../Context/TodoContext";
 import "./CreateTodoButton.css";
 
 function CreateTodoButton() {
-  const { openModal, setOpenModal } = React.useContext(TodoContext);
+  const { setOpenModal } = React.useContext(TodoContext);
 
   const onClickAgregarTodo = () => {
-    setOpenModal(!openModal);
+    setOpenModal(prevState => !prevState); //optenemos el estado actal de setOpenModal y ese lo negamos  
   };
 
   return (

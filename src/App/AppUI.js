@@ -7,7 +7,8 @@ import { TodoItem } from "../components/TodoItem/TodoItem";
 import { TodoList } from "../components/TodoList/TodoList";
 import { TodoSearch } from "../components/TodoSearch/TodoSearch";
 import { Modal } from "../components/Modal";
-
+import { TodoForm } from "../components/TodoForm"
+ 
 function AppUI() {
   const {
     error,
@@ -44,7 +45,7 @@ function AppUI() {
       {
         !!openModal && 
         <Modal>
-          <p>Estoy listo</p>
+          <TodoForm/>
         </Modal>
       }
 

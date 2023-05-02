@@ -7,7 +7,7 @@ function Modal({ children }) {
   // ReactDom tiene este método para crear portales
   return ReactDOM.createPortal(
     <div className="ModalBackground">
-      {children}
+        {children}
     </div>,
     document.getElementById('modal')
   );
