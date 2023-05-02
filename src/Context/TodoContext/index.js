@@ -11,10 +11,11 @@ function TodoProvider(props) {
     error,
   } = useLocalStoraje("ListTodos", []);
 
-  const [search, setSearch] = React.useState("");
+  const [openModal, setOpenModal] = React.useState(false);
   const completedTodos = todos.filter((x) => x.completed).length;
   const totalTodos = todos.length;
 
+  const [search, setSearch] = React.useState("");  
   let listTodos = [];
   if (search.length === 0) {
     listTodos = todos;
@@ -50,6 +51,9 @@ function TodoProvider(props) {
         totalTodos,
         search,
         setSearch,
+
+        openModal,
+        setOpenModal,
 
         error,
         load,
