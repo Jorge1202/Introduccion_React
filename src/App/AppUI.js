@@ -8,6 +8,10 @@ import { TodoList } from "../components/TodoList/TodoList";
 import { TodoSearch } from "../components/TodoSearch/TodoSearch";
 import { Modal } from "../components/Modal";
 import { TodoForm } from "../components/TodoForm"
+
+import { TodosLoading } from "../components/TodosLoading";
+import { TodosError } from "../components/TodosError";
+import { TodosEmpty } from "../components/TodosEmpty";
  
 function AppUI() {
   const {
@@ -25,12 +29,10 @@ function AppUI() {
       <TodoSearch />
 
       <TodoList>
-        {error && <p>Desespérate, hubo un error...</p>}
-        {load &&<p>Cargando...</p>}
-        {(!load && !listTodos.length) && <p>¡Crea tu primer TODO!</p>}
+        {error && <TodosError/>}
+        {load && <TodosLoading/>}
+        {(!load && !listTodos.length) && <TodosEmpty/>}
         
-
-
         {listTodos.map(todo => (
           <TodoItem
             key={todo.text}
