@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Tasks_Introduccion_React/static/css/main.4c5e54ec.css",
+    "main.js": "/Tasks_Introduccion_React/static/js/main.1b7dad17.js",
+    "index.html": "/Tasks_Introduccion_React/index.html",
+    "main.4c5e54ec.css.map": "/Tasks_Introduccion_React/static/css/main.4c5e54ec.css.map",
+    "main.1b7dad17.js.map": "/Tasks_Introduccion_React/static/js/main.1b7dad17.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4c5e54ec.css",
+    "static/js/main.1b7dad17.js"
+  ]
+}
