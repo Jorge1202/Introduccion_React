@@ -1,5 +1,5 @@
 # See the page
-See the page (https://jorge1202.github.io/Tasks_Introduccion_React/) 
+See the page [Ver sitio](https://jorge1202.github.io/Tasks_Introduccion_React/). 
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
